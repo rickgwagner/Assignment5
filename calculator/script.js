@@ -29,69 +29,91 @@
 //Part 8
 //Within the calculate() function get the result text box by its ID and set its value equal to the calculation currently stored in the result text box. HINT: Use the built-in eval() function to perform the heavy lifting for you.
 
-function enter() {
-    this.val = document.getElementById(this.id);
-    document.getElementById('result').value += this.val.value;
-}
-window.addEventListener("load", init, false);
-function init() {
-    seven.addEventListener("click", enter, false);
-    enter;
 
-    eight.addEventListener("click", enter, false);
-    enter;
 
-    nine.addEventListener("click", enter, false);
-    enter;
+//VERSION 1 with EventListeners on each button.
 
-    divide.addEventListener("click", enter, false);
-    enter;
-
-    four.addEventListener("click", enter, false);
-    enter;
-
-    five.addEventListener("click", enter, false);
-    enter;
-
-    six.addEventListener("click", enter, false);
-    enter;
-
-    three.addEventListener("click", enter, false);
-    enter;
-
-    multiply.addEventListener("click", enter, false);
-    enter;
-
-    one.addEventListener("click", enter, false);
-    enter;
-
-    two.addEventListener("click", enter, false);
-    enter;
-
-    three.addEventListener("click", enter, false);
-    enter;
-
-    subtract.addEventListener("click", enter, false);
-    enter;
-
-    zero.addEventListener("click", enter, false);
-    enter;
-
-    period.addEventListener("click", enter, false);
-    enter;
-
-    add.addEventListener("click", enter, false);
-    enter;
-
-    equal.addEventListener("click", calculate, false);
-    }
-    function calculate() {
-    var grabField = document.getElementById('result').value;
-    var makeString = grabField.toString();
-    var finalAnswer = window.eval(makeString);
-    document.getElementById('result').value = finalAnswer;
-}
+//function enter() {
+//    this.val = document.getElementById(this.id);
+//    document.getElementById('result').value += this.val.value;
+//}
+//window.addEventListener("load", init, false);
+//function init() {
+//    seven.addEventListener("click", enter, false);
+//    enter;
+//
+//    eight.addEventListener("click", enter, false);
+//    enter;
+//
+//    nine.addEventListener("click", enter, false);
+//    enter;
+//
+//    divide.addEventListener("click", enter, false);
+//    enter;
+//
+//    four.addEventListener("click", enter, false);
+//    enter;
+//
+//    five.addEventListener("click", enter, false);
+//    enter;
+//
+//    six.addEventListener("click", enter, false);
+//    enter;
+//
+//    three.addEventListener("click", enter, false);
+//    enter;
+//
+//    multiply.addEventListener("click", enter, false);
+//    enter;
+//
+//    one.addEventListener("click", enter, false);
+//    enter;
+//
+//    two.addEventListener("click", enter, false);
+//    enter;
+//
+//    three.addEventListener("click", enter, false);
+//    enter;
+//
+//    subtract.addEventListener("click", enter, false);
+//    enter;
+//
+//    zero.addEventListener("click", enter, false);
+//    enter;
+//
+//    period.addEventListener("click", enter, false);
+//    enter;
+//
+//    add.addEventListener("click", enter, false);
+//    enter;
+//
+//    equal.addEventListener("click", calculate, false);
+//    }
+//    function calculate() {
+//    var grabField = document.getElementById('result').value;
+//    var makeString = grabField.toString();
+//    var finalAnswer = window.eval(makeString);
+//    document.getElementById('result').value = finalAnswer;
+//}
 
 //Figure out a way to simplify your code so that you don’t have to manually attach an event handler to each and every button. You should be able to programmatically attach a listener to every button on the page and attach a handler that listens for the click without having to write so much code. 
 
 //HINT: Remember the concept of “event bubbling”. Perhaps it makes more sense to listen for an event on a parent element rather than each and every button….
+
+//VERSION 2 with EventListeners on body.
+
+var body = document.querySelector("body");
+body.addEventListener("click", function (event) {
+    "use strict";
+    var currentButton =  event.target.id.toString();
+    if (currentButton === "equal") {
+        var grabField = document.getElementById('result').value;
+        var makeString = grabField.toString();
+        var finalAnswer = window.eval(makeString);
+        document.getElementById('result').value = finalAnswer;
+    } else {
+        this.val = document.getElementById(event.target.id);
+        document.getElementById('result').value += this.val.value;
+    }
+}
+    );
