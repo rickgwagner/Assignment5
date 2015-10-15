@@ -1,0 +1,17 @@
+input[type=button] {
+    color:#0099CC;
+    background-color:#CCCCCC;
+    width: 40px;
+    height: 40px;
+}
+
+input[type=button]:hover {
+    background-color:#999999;
+    border: none;
+}
+
+input[type=text] {
+background-color:#FFFFCC;
+width: 166px;    
+margin-bottom: 10px;
+}
